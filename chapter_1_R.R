@@ -20,7 +20,7 @@ df <- data.frame(t, z)
 ggplot(data = df, aes(t, z)) + geom_line(color="darkblue")
 
 # figure 1.4
-data <- read.csv('./timedata/depart.txt', sep='', header=FALSE)
+data <- read.csv('../timedata/depart.txt', sep='', header=FALSE)
 z <- na.omit(c(t(data)))
 date <- ymd("940101") + months(1:length(z))
 x <- 2.701573 + 0.000409 * as.numeric(date)
@@ -30,7 +30,7 @@ ggplot(data = df, aes(date)) + geom_line(aes(y=log(z), colour="z")) +
   scale_x_date(date_breaks="1 year") + ylab("sales")
 
 # figure 1.5
-data <- read.csv('./timedata/koreapass.txt', sep='', header=FALSE)
+data <- read.csv('../timedata/koreapass.txt', sep='', header=FALSE)
 z <- na.omit(c(t(data)))
 date <- ymd("810101") + months(1:length(z))
 df <- data.frame(date, z)
@@ -144,7 +144,7 @@ df <- data.frame(t, e, z)
 ggplot(data=df, aes(t)) + geom_line(aes(y=z, colour="Z")) + geom_line(aes(y=e, colour="E[Z]"))
 
 # ex1_7_1
-data <- read.csv('./timedata/female.txt', sep='', header=FALSE)
+data <- read.csv('../timedata/female.txt', sep='', header=FALSE)
 z <- na.omit(c(t(data)))
 t <- 1:length(z)
 df <- data.frame(t, z)
@@ -154,7 +154,7 @@ ggplot(data = df, aes(t, z)) +
   ylab("female workers(unit: 100thou)")
 
 # ex1_7_2
-data <- read.csv('./timedata/build.txt', sep='', header=FALSE)
+data <- read.csv('../timedata/build.txt', sep='', header=FALSE)
 z <- na.omit(c(t(data)))
 t <- 1:length(z)
 df <- data.frame(t, z)
@@ -164,7 +164,7 @@ ggplot(data = df, aes(t, z)) +
   ylab("pemission")
 
 # ex1_7_3
-data <- read.csv('./timedata/export.txt', sep='', header=FALSE)
+data <- read.csv('../timedata/export.txt', sep='', header=FALSE)
 z <- na.omit(c(t(data)))
 t <- 1:length(z)
 df <- data.frame(t, z)
@@ -174,7 +174,7 @@ ggplot(data = df, aes(t, z)) +
   ylab("sales(unit: $100m)")
 
 # ex1_7_4
-data <- read.csv('./timedata/usapass.txt', sep='', header=FALSE)
+data <- read.csv('../timedata/usapass.txt', sep='', header=FALSE)
 z <- na.omit(c(t(data)))
 t <- 1:length(z)
 df <- data.frame(t, z)
