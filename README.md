@@ -8,13 +8,15 @@
 
 - Chapter 1
 - Chapter 2
+- Chapter 3
 
 ## Exercise
 
 - Chapter 1: ex1.5, ex1.6, ex1.7
 - Chapter 2: ex2.2, ex2.9
+- Chapter 3: ex3.5
 
 ## Prerequisites
 
 - Open Source R
-- SAS University Edition
+- SAS 9.4
