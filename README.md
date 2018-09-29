@@ -6,9 +6,10 @@
 
 ## Example
 
-- Chapter 1
-- Chapter 2
-- Chapter 3
+- [Chapter 1](https://github.com/Bricoler/time-series-analysis/tree/master/chapter1)
+- [Chapter 2](https://github.com/Bricoler/time-series-analysis/tree/master/chapter2)
+- [Chapter 3](https://github.com/Bricoler/time-series-analysis/tree/master/chapter3)
+- [Chapter 4](https://github.com/Bricoler/time-series-analysis/tree/master/chapter4)
 
 ## Exercise
 
