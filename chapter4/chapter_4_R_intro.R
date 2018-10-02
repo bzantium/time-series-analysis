@@ -101,7 +101,6 @@ ggplot(data=df, aes(x=date)) +
 # irr <- adjtrend - season
 
 z <- c(10,12,8,12,7,5,8,7,9,10,3,6,8,4,9,12,8,12,13,9)
-z <- rpois(100, 10)
 t <- 1:length(z)
 ma3 <- ma(z, 3)
 ma33 <- ma(ma3, 3)
