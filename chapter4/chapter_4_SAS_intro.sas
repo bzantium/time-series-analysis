@@ -1,4 +1,11 @@
 symbol1 l=1 i=join v=none c=black;
+symbol2 l=1 i=join v=none c=red;
+symbol3 l=1 i=join v=none c=blue;
+symbol4 l=1 i=join v=none c=green;
+symbol5 l=1 i=join v=none c=orange;
+symbol6 l=1 i=join v=none c=purple;
+symbol7 l=1 i=join v=none c=pink;
+
 symbol2 h=0.5 i=join v=none c=red;
 symbol3 l=3 i=join v=none c=blue;
 
@@ -116,7 +123,7 @@ ma33=(ma3+LL1+LL2)/3;
 ma35=(ma3+LL1+LL2+LL3+LL4)/5;
 ma12=(z+L1+L2+L3+L4+L5+L6+L7+L8+L9+L10+L11)/12;
 LLL1=lag1(ma12);
-ma122=(ma12+LLL1);
+ma122=(ma12+LLL1)/2;
 hendersn=-0.073*L4+0.294*L3+0.558*L2+0.294*L1-0.073*z; run;
 
 data ma3; set ma; t=_n_-1; keep t ma3; run;
@@ -126,8 +133,9 @@ data ma12; set ma; t=_n_-6; keep t ma12; run;
 data ma122; set ma; t=_n_-6; keep t ma122; run;
 data hendersn; set ma; t=_n_-2; keep t hendersn; run;
 data all; merge raw ma3 ma33 ma35 ma12 ma122 hendersn; by t; if t>0; run;
-proc print; var t z ma3 ma33 ma35 ma12 ma122 hendersn; 
-run;
+proc print; var t z ma3 ma33 ma35 ma12 ma122 hendersn; run;
+proc gplot data=all; 
+plot z*t=1 ma3*t=2 ma33*t=3 ma35*t=4 ma12*t=5 ma122*t=6 hendersn*t=7/frame overlay legend; run;
 
 *example 4.4;
 data food;

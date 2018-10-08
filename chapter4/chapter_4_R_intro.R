@@ -135,6 +135,7 @@ adjseason <- foodout$series$d11
 trend <- foodout$series$d12
 irregula <- as.numeric(foodout$series$d13)
 df <- data.frame(date, food, trend, seasonal, irregula, adjseason)
+df
 
 ggplot(data=df, aes(x=date)) + 
   geom_line(aes(y=food, colour='food')) + 
