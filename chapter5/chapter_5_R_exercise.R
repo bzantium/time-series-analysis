@@ -3,10 +3,12 @@ library(ggplot2)
 
 #exercise 5.2
 z <- c(7,6,5,8,9,4,5,5,4,6,7,8,5,6,5)
-acfz <- acf(z, pl=F)
-autoplot(acf_z)
-pacfz <- pacf(z, pl=F)
-autoplot(pacf_z)
+acfz_ <- acf(z, pl=F)
+print(acfz_)
+autoplot(acfz_)
+pacfz_ <- pacf(z, pl=F)
+print(pacfz_)
+autoplot(pacfz_)
 
 #custom function
 ACF <- function(z, nlag=11){
@@ -63,13 +65,15 @@ testplot <- function(df){
     geom_segment(aes(xend=lag, yend=0)) + 
     xlab("Lag") +
     ylab(ylegend) + 
-    scale_x_continuous(breaks = seq(1, nlag, by = 1))
+    scale_x_continuous(breaks = seq(1, length(df$lag), by = 1))
 }
 
 acfz <- ACF(z)
+print(acfz)
 testplot(acfz)
 
 pacfz <- PACF(z)
+print(pacfz)
 testplot(pacfz)
 
 #exercise 5.3
