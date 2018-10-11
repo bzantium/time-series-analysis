@@ -47,11 +47,11 @@ PACF <- function(z, nlag=11){
 testplot <- function(df){
   
   if(!is.null(df$acf)) {
-    ylegend <- "PACF"
+    ylegend <- "ACF"
     gplt <- ggplot(data=df, aes(x=lag, y=acf))
   }
   else if(!is.null(df$pacf)) {
-    ylegend <- "ACF"
+    ylegend <- "PACF"
     gplt <- ggplot(data=df, aes(x=lag, y=pacf))
   }
   else {
@@ -101,4 +101,3 @@ regz2$coefficients["z2"]
 acfz$acf[2]
 pacfz <- PACF(z)
 testplot(pacfz)
-
