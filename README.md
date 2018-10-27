@@ -11,6 +11,7 @@
 - [Chapter 3](https://github.com/Bricoler/time-series-analysis/tree/master/chapter3)
 - [Chapter 4](https://github.com/Bricoler/time-series-analysis/tree/master/chapter4)
 - [Chapter 5](https://github.com/Bricoler/time-series-analysis/tree/master/chapter5)
+- [Chapter 6](https://github.com/Bricoler/time-series-analysis/tree/master/chapter6)
 
 ## Exercise
 
