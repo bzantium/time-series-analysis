@@ -1,5 +1,6 @@
 library(lubridate)
 library(ggplot2)
+library(scales)
 library(car)
 library(forecast)
 
@@ -16,24 +17,24 @@ ggplot(data=df1, aes(year, pop)) +
   geom_line() + 
   geom_point(shape=8, color='black')
 
-reg1 <- lm(pop~t, data=df1)
-anova(reg1)
-summary(reg1)
-durbinWatsonTest(reg1)
+regmodel <- lm(pop~t, data=df1)
+anova(regmodel)
+summary(regmodel)
+durbinWatsonTest(regmodel)
 
-df2 <- data.frame(year, reg1$fitted.values, reg1$residuals)
+df2 <- data.frame(year, regmodel1$fitted.values, regmodel1$residuals)
 colnames(df2) <- c("year", "pred", "residual")
 ggplot(data=df2, aes(year, residual)) + 
   geom_line() + 
   geom_point(shape=3, color='black') + 
   geom_hline(yintercept=0)
 
-reg2 <- lm(pop~t+t2, data=df1)
-anova(reg2)
-summary(reg2)
-durbinWatsonTest(reg2)
+regmodel <- lm(pop~t+t2, data=df1)
+anova(regmodel)
+summary(regmodel)
+durbinWatsonTest(regmodel)
 
-df3 <- data.frame(year, pop, reg2$fitted.values, reg2$residuals)
+df3 <- data.frame(year, pop, regmodel$fitted.values, regmodel$residuals)
 colnames(df3) <- c("year", "pop", "pred", "residual")
 ggplot(data=df3, aes(x=year)) + 
   geom_line(aes(y=pop, colour='pop')) + 
@@ -47,10 +48,10 @@ ggplot(data=df3, aes(year, residual)) +
   geom_point(shape=3, color='black') + 
   geom_hline(yintercept=0)
 
-reg3 <- lm(lnpop~t+t2, data=df1)
-anova(reg3)
-summary(reg3)
-df4 <- data.frame(year, reg3$residuals)
+regmodel <- lm(lnpop~t+t2, data=df1)
+anova(regmodel)
+summary(regmodel)
+df4 <- data.frame(year, regmodel$residuals)
 colnames(df4) <- c("year", "residual")
 ggplot(data=df4, aes(year, residual)) + 
   geom_line() + 
@@ -76,7 +77,7 @@ ggplot(data=df, aes(t)) +
   geom_point(data=df, aes(y=second), shape=8, size=1, color='#00cc33') +
   theme(legend.title=element_blank())
 
-# example 2.2
+# example 2.2 & 2.4
 data <- read.csv('../timedata/depart.txt', sep='', header=FALSE)
 dept <- na.omit(c(t(data)))
 t <- 1:length(dept)
@@ -103,17 +104,19 @@ ggplot(data=df1, aes(date, dept)) +
 ggplot(data=df1, aes(date, lndept)) +
   geom_line()
 
-reg <- lm(lndept~t+i1+i2+i3+i4+i5+i6+i7+i8+i9+i10+i11+i12, data=df1)
-anova(reg)
-summary(reg)
-durbinWatsonTest(reg)
+regmodel <- lm(lndept~t+i1+i2+i3+i4+i5+i6+i7+i8+i9+i10+i11+i12+0, data=df1)
+regmodel$coefficients
 
-df2 <- data.frame(date, reg$residuals)
-colnames(df2) <- c('date', 'residual')
+acf2(residuals(regmodel))
+ar3res <- arima(residuals(regmodel),order=c(3,0,0))
+durbinWatsonTest(ar3res)
 
+df2 <- data.frame(date, residual=as.numeric(ar3res$residuals))
 ggplot(data=df2, aes(date, residual)) +
   geom_line() +
-  geom_hline(yintercept=0)
+  geom_hline(yintercept=0) +
+  scale_x_date(date_breaks = "1 year",
+               labels = date_format("JAN %y"))
 
 # figure 2.12
 t <- 1:60
@@ -163,7 +166,7 @@ ggplot(data=df1, aes(year, catv)) +
 ggplot(data=df1, aes(year, lncatv)) +
   geom_point(shape=3)
 
-reg <- lm(lncatv~year, data=df1)
+regmodel <- lm(lncatv~year, data=df1)
 anova(reg)
 summary(reg)
 
@@ -187,7 +190,7 @@ ggplot(data=df2, aes(x=year, y=residual)) +
 # trend model prediction
 z <- c(23,25,27,34,38,47,49,39,57,59,63,64,69,78,73,89,83,84,86,92)
 t <- 1:length(z)
-reg <- lm(z~t)
+regmodel <- lm(z~t)
 new_t <- 1:32
 new <- data.frame(t=new_t)
 df <- data.frame(predict(lm(z~t), new, interval="prediction", level=0.95))
