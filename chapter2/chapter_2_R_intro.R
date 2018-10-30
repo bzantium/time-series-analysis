@@ -22,7 +22,7 @@ anova(regmodel)
 summary(regmodel)
 durbinWatsonTest(regmodel)
 
-df2 <- data.frame(year, regmodel1$fitted.values, regmodel1$residuals)
+df2 <- data.frame(year, regmodel$fitted.values, regmodel$residuals)
 colnames(df2) <- c("year", "pred", "residual")
 ggplot(data=df2, aes(year, residual)) + 
   geom_line() + 
