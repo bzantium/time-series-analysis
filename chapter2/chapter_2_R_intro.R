@@ -21,7 +21,6 @@ ggplot(data=df1, aes(year, pop)) +
 regmodel <- lm(pop~t, data=df1)
 anova(regmodel)
 summary(regmodel)
-durbinWatsonTest(regmodel)
 
 df2 <- data.frame(year, regmodel$fitted.values, regmodel$residuals)
 colnames(df2) <- c("year", "pred", "residual")
@@ -110,7 +109,6 @@ regmodel$coefficients
 
 acf2(residuals(regmodel))
 ar3res <- arima(residuals(regmodel),order=c(3,0,0))
-durbinWatsonTest(ar3res)
 
 df2 <- data.frame(date, residual=as.numeric(ar3res$residuals))
 ggplot(data=df2, aes(date, residual)) +
@@ -168,8 +166,8 @@ ggplot(data=df1, aes(year, lncatv)) +
   geom_point(shape=3)
 
 regmodel <- lm(lncatv~year, data=df1)
-anova(reg)
-summary(reg)
+anova(regmodel)
+summary(regmodel)
 
 p1 <- k/(exp(reg$fitted.values)+1)
 residual <- catv-p1
