@@ -107,11 +107,16 @@ ggplot(data=df1, aes(date, lndept)) +
 regmodel <- lm(lndept~t+i1+i2+i3+i4+i5+i6+i7+i8+i9+i10+i11+i12+0, data=df1)
 regmodel$coefficients
 
+df2 <- data.frame(date, residual=as.numeric(regmodel$residuals))
+
+ggplot(data=df2, aes(date, residual)) +
+  geom_line()
+
 acf2(residuals(regmodel))
 ar3res <- arima(residuals(regmodel),order=c(3,0,0))
 
-df2 <- data.frame(date, residual=as.numeric(ar3res$residuals))
-ggplot(data=df2, aes(date, residual)) +
+df3 <- data.frame(date, residual=as.numeric(ar3res$residuals))
+ggplot(data=df3, aes(date, residual)) +
   geom_line() +
   geom_hline(yintercept=0) +
   scale_x_date(date_breaks = "1 year",
