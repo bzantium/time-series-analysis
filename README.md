@@ -6,15 +6,15 @@
 
 ## Example
 
-- [Chapter 1](https://github.com/Bricoler/time-series-analysis/tree/master/chapter1)
-- [Chapter 2](https://github.com/Bricoler/time-series-analysis/tree/master/chapter2)
-- [Chapter 3](https://github.com/Bricoler/time-series-analysis/tree/master/chapter3)
-- [Chapter 4](https://github.com/Bricoler/time-series-analysis/tree/master/chapter4)
-- [Chapter 5](https://github.com/Bricoler/time-series-analysis/tree/master/chapter5)
-- [Chapter 6](https://github.com/Bricoler/time-series-analysis/tree/master/chapter6)
-- [Chapter 7](https://github.com/Bricoler/time-series-analysis/tree/master/chapter7)
-- [Chapter 8](https://github.com/Bricoler/time-series-analysis/tree/master/chapter8)
-- [Chapter 9](https://github.com/Bricoler/time-series-analysis/tree/master/chapter9)
+- [Chapter 01](https://github.com/Bricoler/time-series-analysis/tree/master/chapter01)
+- [Chapter 02](https://github.com/Bricoler/time-series-analysis/tree/master/chapter02)
+- [Chapter 03](https://github.com/Bricoler/time-series-analysis/tree/master/chapter03)
+- [Chapter 04](https://github.com/Bricoler/time-series-analysis/tree/master/chapter04)
+- [Chapter 05](https://github.com/Bricoler/time-series-analysis/tree/master/chapter05)
+- [Chapter 06](https://github.com/Bricoler/time-series-analysis/tree/master/chapter06)
+- [Chapter 07](https://github.com/Bricoler/time-series-analysis/tree/master/chapter07)
+- [Chapter 08](https://github.com/Bricoler/time-series-analysis/tree/master/chapter08)
+- [Chapter 09](https://github.com/Bricoler/time-series-analysis/tree/master/chapter09)
 - [Chapter 10](https://github.com/Bricoler/time-series-analysis/tree/master/chapter10)
 
 ## Exercise
