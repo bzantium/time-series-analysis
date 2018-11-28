@@ -14,6 +14,8 @@
 - [Chapter 6](https://github.com/Bricoler/time-series-analysis/tree/master/chapter6)
 - [Chapter 7](https://github.com/Bricoler/time-series-analysis/tree/master/chapter7)
 - [Chapter 8](https://github.com/Bricoler/time-series-analysis/tree/master/chapter8)
+- [Chapter 9](https://github.com/Bricoler/time-series-analysis/tree/master/chapter9)
+- [Chapter 10](https://github.com/Bricoler/time-series-analysis/tree/master/chapter10)
 
 ## Exercise
 
@@ -21,6 +23,7 @@
 - Chapter 2: ex2.2, ex2.9
 - Chapter 3: ex3.5
 - Chapter 5: ex5.2, ex5.3
+- Chapter 10: ex10.2, ex10.8
 
 ## Prerequisites
 
