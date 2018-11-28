@@ -19,10 +19,10 @@
 
 ## Exercise
 
-- Chapter 1: ex1.5, ex1.6, ex1.7
-- Chapter 2: ex2.2, ex2.9
-- Chapter 3: ex3.5
-- Chapter 5: ex5.2, ex5.3
+- Chapter 01: ex1.5, ex1.6, ex1.7
+- Chapter 02: ex2.2, ex2.9
+- Chapter 03: ex3.5
+- Chapter 05: ex5.2, ex5.3
 - Chapter 10: ex10.2, ex10.8
 
 ## Prerequisites
