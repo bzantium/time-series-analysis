@@ -157,9 +157,9 @@ ggplot(aes(x=date), data=df) +
   geom_line(aes(y=area.fitted, color="fitted")) + 
   geom_line(aes(y=pred, color="forecast"), linetype="longdash") +
   geom_ribbon(aes(ymin=lb,ymax=ub), alpha=0.2) +
-  scale_color_manual(values = c('Z' = 'black', 'fitted'='darkblue', 'forecast' = 'blue')) +
+  scale_color_manual(values = c('Z' = 'black', 'fitted'='blue', 'forecast' = 'blue')) +
   scale_x_date(breaks="2 year", labels = date_format("%Y")) +
-  theme(legend.position = c(0.06, 0.10), 
+  theme(legend.position = c(0.06, 0.90), 
         legend.background=element_rect(fill="transparent"),
         legend.title=element_blank())
 options(warn=0)
