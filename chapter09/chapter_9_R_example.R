@@ -35,11 +35,10 @@ options(warn=-1)
 ggplot(aes(x=time), data=df) + 
   geom_line(aes(y=z, color="Z")) + 
   geom_line(aes(y=pred, color="forecast"), linetype="longdash") +
-  geom_line(aes(y=ub, color="ub"), linetype="dashed") + 
-  geom_line(aes(y=lb, color="lb"), linetype="dashed") + 
+  geom_ribbon(aes(ymin=lb,ymax=ub), alpha=0.2) +
   scale_x_continuous(breaks=seq(0,125,25)) +
-  scale_color_manual(values = c('Z' = 'black', 'forecast' = 'blue', 'ub' = 'darkred', 'lb' = 'darkred')) +
-  theme(legend.position = c(0.06, 0.88), 
+  scale_color_manual(values = c('Z' = 'black', 'forecast' = 'blue')) +
+  theme(legend.position = c(0.06, 0.92), 
         legend.background=element_rect(fill="transparent"),
         legend.title=element_blank())
 options(warn=0)
@@ -75,11 +74,10 @@ options(warn=-1)
 ggplot(aes(x=time), data=df) + 
   geom_line(aes(y=z, color="Z")) + 
   geom_line(aes(y=pred, color="forecast"), linetype="longdash") +
-  geom_line(aes(y=ub, color="ub"), linetype="dashed") + 
-  geom_line(aes(y=lb, color="lb"), linetype="dashed") + 
+  geom_ribbon(aes(ymin=lb,ymax=ub), alpha=0.2) +
   scale_x_continuous(breaks=seq(0,350,50)) +
-  scale_color_manual(values = c('Z' = 'black', 'forecast' = 'blue', 'ub' = 'darkred', 'lb' = 'darkred')) +
-  theme(legend.position = c(0.06, 0.13), 
+  scale_color_manual(values = c('Z' = 'black', 'forecast' = 'blue')) +
+  theme(legend.position = c(0.06, 0.92), 
         legend.background=element_rect(fill="transparent"),
         legend.title=element_blank())
 options(warn=0)
