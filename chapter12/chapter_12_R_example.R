@@ -28,7 +28,7 @@ acf2(ozone[year<1960])
 LjungBox(ozone[year<1960], seq(6,24,6))
 
 acf2(ozone)
-LjungBox(ozone, seq(6,24,6))
+LjungBox(ts(ozone), seq(6,24,6))
 
 period <- 12
 arimaModel <- Arima(ozone[year<1960], order=c(0,0,1), 
@@ -130,31 +130,36 @@ ggplot(aes(x=date), data=df) +
 
 larea1 <- diff(larea, 1)
 
+larea1.fitted <- arimaModel$fitted + head(larea1, -period)
+larea.fitted <- larea1.fitted + head(tail(larea, length(larea1.fitted) + 1), length(larea1.fitted))
 larea1.pred <- pred + head(tail(larea1, npred + period), npred)
-larea.pred <- larea1.pred + tail(larea, npred)
+larea.pred <- larea1.pred + head(tail(larea, npred + 1), npred)
 larea1.ub <- ub + head(tail(larea1, npred + period), npred)
-larea.ub <- larea1.ub + tail(larea, npred)
+larea.ub <- larea1.ub + head(tail(larea, npred + 1), npred)
 larea1.lb <- lb + head(tail(larea1, npred + period), npred)
-larea.lb <- larea1.lb + tail(larea, npred)
+larea.lb <- larea1.lb + head(tail(larea, npred), npred)
 
+area.fitted <- exp(larea.fitted)
 area.pred <- exp(larea.pred)
 area.ub <- exp(larea.ub)
 area.lb <- exp(larea.lb)
 
+area.fitted <- c(rep(NA, 13), area.fitted, rep(NA, npred))
 area.pred <- c(rep(NA, lenz), area.pred)
 area.ub <- c(rep(NA, lenz), area.ub)
 area.lb <- c(rep(NA, lenz), area.lb)
 area <- c(area, rep(NA, npred))
 date <- ymd("19800101") + months(1:length(area)-1)
-df <- data.frame(area, pred=area.pred, ub=area.ub, lb=area.lb, date)
+df <- data.frame(area, area.fitted, pred=area.pred, ub=area.ub, lb=area.lb, date)
 options(warn=-1)
 ggplot(aes(x=date), data=df) + 
   geom_line(aes(y=area, color="Z")) + 
+  geom_line(aes(y=area.fitted, color="fitted")) + 
   geom_line(aes(y=pred, color="forecast"), linetype="longdash") +
   geom_ribbon(aes(ymin=lb,ymax=ub), alpha=0.2) +
-  scale_color_manual(values = c('Z' = 'black', 'forecast' = 'blue')) +
+  scale_color_manual(values = c('Z' = 'black', 'fitted'='darkblue', 'forecast' = 'blue')) +
   scale_x_date(breaks="2 year", labels = date_format("%Y")) +
-  theme(legend.position = c(0.06, 0.08), 
+  theme(legend.position = c(0.06, 0.10), 
         legend.background=element_rect(fill="transparent"),
         legend.title=element_blank())
 options(warn=0)
@@ -171,3 +176,4 @@ outlier.ozone <- tso(ts(ozone),
                      args.tsmethod=list(order=c(0,0,1), seasonal=list(order=c(0,1,1), period=12)))
 outlier.ozone
 plot(outlier.ozone)
+
